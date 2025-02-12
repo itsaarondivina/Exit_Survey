@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center main-container" ng-controller="homeController">
+        <div class="col-md-6 title-container">
+            <h1>We'd love to hear your insights!</h1>
+            <p>Help us improve by sharing your thoughts and savvy. Click here to get started.</p>
+            <button class="btn btn-orange" ng-click="goSurvey()">
+                <strong>Take the survey now!</strong>
+            </button>
+        </div>
+        <div class="col-md-6 image_container">
+            <img src="~/Content/Image/undraw_Data_re_80ws.png" alt="Image Description" class="img-fluid" />
+        </div>
+    </div>
+</div>
+
+<style>
+    .main-container {
+        margin-bottom: 58px;
+    }
+
+    .title-container {
+        padding: 20px;
+    }
+
+    .btn-orange {
+        background-color: #FF4500;
+        color: white;
+        border-radius: 20px;
+        font-size: 15px;
+        padding: 12px 51px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: transform 80ms ease-in;
+    }
+</style>

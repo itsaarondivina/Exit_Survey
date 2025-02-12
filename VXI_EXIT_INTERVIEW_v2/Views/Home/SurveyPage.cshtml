@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "SurveyPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string Hrid = Session["Id"] as string;
+
+}
+<style>
+    .main-container {
+        margin-top: 40px;
+    }
+</style>
+
+<section class="main-container" ng-controller="homeController" ng-init="Loaditems();" id="main-form">
+    <div class="contianer-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="title-container">
+                    <p> Logged in as: <b>@(Hrid)</b></p>
+                    <h2> Exit Questionnaire</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row question-container" data-questionid="{{q.QuestionId}}" data-type="{{q.QuestionType}}" ng-repeat="q in Question">
+            <div class="col-xs-12 col-md-12 col-lg-12 colxl-12">
+                <p class=""> {{q.Description}} </p>
+
+                <div class="answer-sheet" ng-repeat="as in Answer" ng-if="as.QuestionId == q.QuestionId">
+                    <div class="form-group answer-container" ng-if="q.QuestionType == 1">
+                        <input type="text" class="form-control answer" data-questionid="{{as.QuestionId}}" data-id="{{as.AnswerId}}" placeholder="{{as.Description}}" />
+                    </div>
+
+                    <div class="form-check answer-container checkbox" ng-if="q.QuestionType == 3">
+                        <input class="form-check-input answer" type="checkbox" value="{{as.Description}}" data-id="{{as.AnswerId}}" data-questionid="{{as.QuestionId}}" />
+                        <label> {{as.Description}} </label>
+                    </div>
+
+                    <div class="form-check answer-container radio" ng-if="q.QuestionType != 3 && q.QuestionType != 1">
+                        <input class="form-check-input answer" data-id="{{as.AnswerId}}" value="{{as.Description}}" data-questionid="{{as.QuestionId}}" name="{{q.QuestionId}}" type="radio">
+                        <label> {{as.Description}} </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr style=" background-color: #f79a42; " />
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
+                <center>
+                    <button ng-click="SubmitSurvey()" class="btn btn-warning"> Submit </button>
+                </center>
+            </div>
+        </div>
+    </div>
+</section>

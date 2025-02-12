@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VXI_EXIT_INTERVIEW_FINAL_PAYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AccountInformation">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountId" Type="Guid" Nullable="false" />
+    <Property Name="HrId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Hiredate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="FullName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SeparationDate" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="HiringDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LineOfBusiness" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnswerID" Type="Guid" Nullable="false" />
+    <Property Name="QuestionID" Type="Guid" />
+    <Property Name="AnswerDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Createdby" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+    <NavigationProperty Name="UserAnswer" Relationship="Self.FK_UserAnswer_Answer" FromRole="Answer" ToRole="UserAnswer" />
+  </EntityType>
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hrid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="HiredDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Completion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hrid" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="AccountId" Type="Guid" />
+    <Property Name="IsFinished" Type="Boolean" />
+    <Property Name="DateFinished" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="EmailerDistro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailDistro" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OtherEmployeeDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmailAddress" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Hrid" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionID" Type="Guid" Nullable="false" />
+    <Property Name="SurveyID" Type="Guid" />
+    <Property Name="QuestionType" Type="Int32" />
+    <Property Name="QuestionAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="QuestionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Createdby" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OtherAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+    <NavigationProperty Name="SurveyInfo" Relationship="Self.FK_Question_Survey" FromRole="Question" ToRole="SurveyInfo" />
+    <Property Name="hasOther" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="RequestAttachments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OriginalFileName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="SavedFileName" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SiteLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SiteDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SurveyCheckerOnline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SurveyId" Type="Guid" />
+    <Property Name="Createdby" Type="Guid" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SurveyInfo">
+    <Key>
+      <PropertyRef Name="SurveyID" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SurveyID" Type="Guid" Nullable="false" />
+    <Property Name="SurveyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Createdby" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Question" Relationship="Self.FK_Question_Survey" FromRole="SurveyInfo" ToRole="Question" />
+  </EntityType>
+  <EntityType Name="UserAnswer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserAnswerID" Type="Guid" Nullable="false" />
+    <Property Name="AccountId" Type="Guid" />
+    <Property Name="AnswerID" Type="Guid" />
+    <Property Name="QuestionID" Type="Guid" />
+    <Property Name="SurveyID" Type="Guid" />
+    <Property Name="Response" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Createdby" Type="Guid" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="OtherResponse" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK_UserAnswer_Answer" FromRole="UserAnswer" ToRole="Answer" />
+  </EntityType>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAnswer_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="UserAnswer" Type="Self.UserAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="UserAnswer">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Survey">
+    <End Role="SurveyInfo" Type="Self.SurveyInfo" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyInfo">
+        <PropertyRef Name="SurveyID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VXI_EXIT_INTERVIEW_FINAL_PAYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AccountInformation" EntityType="Self.AccountInformation" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" />
+    <EntitySet Name="Assignment" EntityType="Self.Assignment" />
+    <EntitySet Name="Completion" EntityType="Self.Completion" />
+    <EntitySet Name="EmailerDistro" EntityType="Self.EmailerDistro" />
+    <EntitySet Name="OtherEmployeeDetails" EntityType="Self.OtherEmployeeDetails" />
+    <EntitySet Name="Question" EntityType="Self.Question" />
+    <EntitySet Name="RequestAttachments" EntityType="Self.RequestAttachments" />
+    <EntitySet Name="SiteLocation" EntityType="Self.SiteLocation" />
+    <EntitySet Name="SurveyCheckerOnline" EntityType="Self.SurveyCheckerOnline" />
+    <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" />
+    <EntitySet Name="UserAnswer" EntityType="Self.UserAnswer" />
+    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAnswer_Answer" Association="Self.FK_UserAnswer_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="UserAnswer" EntitySet="UserAnswer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Survey" Association="Self.FK_Question_Survey">
+      <End Role="SurveyInfo" EntitySet="SurveyInfo" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <FunctionImport Name="usp_Report" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+      <Parameter Name="Site" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_Report_bydate" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_bydate_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_Report_ById" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_ById_Result)">
+      <Parameter Name="Hrid" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="usp_Report_FinalPay" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_FinalPay_Result)">
+      <Parameter Name="StartDate" Mode="In" Type="String" />
+      <Parameter Name="EndDate" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="usp_Report_Result">
+    <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LineOfBusiness" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Site" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeparationDate" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+    <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Question1" Nullable="true" />
+    <Property Type="String" Name="Response1" Nullable="true" />
+    <Property Type="String" Name="Question2" Nullable="true" />
+    <Property Type="String" Name="Response2" Nullable="true" />
+    <Property Type="String" Name="Others" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Question3" Nullable="true" />
+    <Property Type="String" Name="Response3" Nullable="true" />
+    <Property Type="String" Name="Question4" Nullable="true" />
+    <Property Type="String" Name="Response4" Nullable="true" />
+    <Property Type="String" Name="Question5" Nullable="true" />
+    <Property Type="String" Name="Response5" Nullable="true" />
+    <Property Type="String" Name="Question6" Nullable="true" />
+    <Property Type="String" Name="Response6" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_Report_bydate_Result">
+    <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LineOfBusiness" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Site" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeparationDate" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+    <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Question1" Nullable="true" />
+    <Property Type="String" Name="Response1" Nullable="true" />
+    <Property Type="String" Name="Question2" Nullable="true" />
+    <Property Type="String" Name="Response2" Nullable="true" />
+    <Property Type="String" Name="Others" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Question3" Nullable="true" />
+    <Property Type="String" Name="Response3" Nullable="true" />
+    <Property Type="String" Name="Question4" Nullable="true" />
+    <Property Type="String" Name="Response4" Nullable="true" />
+    <Property Type="String" Name="Question5" Nullable="true" />
+    <Property Type="String" Name="Response5" Nullable="true" />
+    <Property Type="String" Name="Question6" Nullable="true" />
+    <Property Type="String" Name="Response6" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_Report_ById_Result">
+    <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Birthday" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LineOfBusiness" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="Site" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SeparationDate" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+    <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Question1" Nullable="true" />
+    <Property Type="String" Name="Response1" Nullable="true" />
+    <Property Type="String" Name="Question2" Nullable="true" />
+    <Property Type="String" Name="Response2" Nullable="true" />
+    <Property Type="String" Name="Others" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="Question3" Nullable="true" />
+    <Property Type="String" Name="Response3" Nullable="true" />
+    <Property Type="String" Name="Question4" Nullable="true" />
+    <Property Type="String" Name="Response4" Nullable="true" />
+    <Property Type="String" Name="Question5" Nullable="true" />
+    <Property Type="String" Name="Response5" Nullable="true" />
+    <Property Type="String" Name="Question6" Nullable="true" />
+    <Property Type="String" Name="Response6" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_Report_FinalPay_Result">
+    <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+    <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+    <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+    <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="SavedFileName" Nullable="true" MaxLength="450" />
+  </ComplexType>
+</Schema>

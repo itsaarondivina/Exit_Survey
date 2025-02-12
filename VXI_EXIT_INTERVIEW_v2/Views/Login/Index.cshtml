@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Authentication.cshtml";
+}
+<link href="~/Content/CSS/LoginCSS.css" rel="stylesheet" />
+<style>
+</style>
+<section ng-controller="loginController">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <div class="login-form-container bg-white" style="background-color: #e5e0e0 !important; color: black; ">
+                    <div class="header-form">
+                        <center>
+                            <img src="~/Content/Image/Vxi-logo(3).png" class="img-fluid login-form-logo" style=" margin-top: 3%;" />
+                            <h2 style="color:black !important; font-size:30px;" class="text-secondary text-center login-form-title">EXIT SURVEY</h2>
+                        </center>
+                    </div>
+                    <div class="body-form">
+                        <form>
+                            <div class="form-group">
+                                <label for="Hrid"><strong> HRID:</strong> </label>
+                                <input type="text" class="form-control" id="Hrid" aria-describedby="Hrid" placeholder="Hrid" ng-model="loginInfo.Hrid" style="width: 100%; max-width: 100%;" ng-change="resetHridValidation()" maxlength="20">
+                                <span id="req_hrid" style="color: red; display: none;">Hrid is required.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="hiredDate"> <strong>Birth Date:</strong> </label>
+                                <input type="password" class="form-control" id="hiredDate" ng-model="loginInfo.BirthDate" placeholder="MMDDYYYY" maxlength="8" style="width: 100%; max-width: 100%;" ng-change="resetbdayValidation()">
+                                <span id="req_bday" style="color: red; display: none;">Birth Date is required.</span>
+                            </div>
+                            <hr />
+                            <center>
+                                <button style="background-color: #FF4500; color:white; border-radius: 20px; font-size: 14px; padding: 12px 45px; letter-spacing: 1px; letter-spacing: 1px; text-transform: uppercase; transition: transform 80ms ease-in; " type="submit" class="btn" ng-click="Login()">   <strong>Login</strong> </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="~/Scripts/angular.js"></script>

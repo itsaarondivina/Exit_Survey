@@ -1,0 +1,834 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountInformation">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HrId" Type="varchar" MaxLength="50" />
+          <Property Name="Hiredate" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="FullName" Type="varchar" MaxLength="350" />
+          <Property Name="Site" Type="varchar" MaxLength="50" />
+          <Property Name="SeparationDate" Type="varchar" MaxLength="150" />
+          <Property Name="HiringDate" Type="varchar" MaxLength="50" />
+          <Property Name="LineOfBusiness" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerID" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnswerID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="QuestionID" Type="uniqueidentifier" />
+          <Property Name="AnswerDescription" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Createdby" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hrid" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="350" />
+          <Property Name="HiredDate" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Completion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hrid" Type="varchar" MaxLength="16" />
+          <Property Name="AccountId" Type="uniqueidentifier" />
+          <Property Name="IsFinished" Type="bit" />
+          <Property Name="DateFinished" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmailerDistro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Site" Type="varchar" MaxLength="50" />
+          <Property Name="EmailDistro" Type="varchar" MaxLength="450" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="OtherEmployeeDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="450" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="24" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Hrid" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SurveyID" Type="uniqueidentifier" />
+          <Property Name="QuestionType" Type="int" />
+          <Property Name="QuestionAnswer" Type="varchar(max)" />
+          <Property Name="QuestionDescription" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Createdby" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OtherAnswer" Type="varchar" MaxLength="250" />
+          <Property Name="hasOther" Type="bit" />
+        </EntityType>
+        <EntityType Name="RequestAttachments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OriginalFileName" Type="varchar" MaxLength="350" />
+          <Property Name="SavedFileName" Type="varchar" MaxLength="450" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="CreateBy" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="SiteLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteId" Type="varchar" MaxLength="50" />
+          <Property Name="SiteDescription" Type="varchar" MaxLength="250" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="15" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="SurveyCheckerOnline">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurveyId" Type="uniqueidentifier" />
+          <Property Name="Createdby" Type="uniqueidentifier" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="SurveyInfo">
+          <Key>
+            <PropertyRef Name="SurveyID" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SurveyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SurveyDescription" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Createdby" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserAnswerID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AccountId" Type="uniqueidentifier" />
+          <Property Name="AnswerID" Type="uniqueidentifier" />
+          <Property Name="QuestionID" Type="uniqueidentifier" />
+          <Property Name="SurveyID" Type="uniqueidentifier" />
+          <Property Name="Response" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="Createdby" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="OtherResponse" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Survey">
+          <End Role="SurveyInfo" Type="Self.SurveyInfo" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SurveyInfo">
+              <PropertyRef Name="SurveyID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SurveyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAnswer_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+          <End Role="UserAnswer" Type="Self.UserAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnswerID" />
+            </Principal>
+            <Dependent Role="UserAnswer">
+              <PropertyRef Name="AnswerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_Report" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="varchar" Mode="In" />
+          <Parameter Name="EndDate" Type="varchar" Mode="In" />
+          <Parameter Name="Site" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Report_bydate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="varchar" Mode="In" />
+          <Parameter Name="EndDate" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Report_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Hrid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_Report_FinalPay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartDate" Type="varchar" Mode="In" />
+          <Parameter Name="EndDate" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="VXI_EXIT_INTERVIEW_FINAL_PAYModelStoreContainer">
+          <EntitySet Name="AccountInformation" EntityType="Self.AccountInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Assignment" EntityType="Self.Assignment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Completion" EntityType="Self.Completion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailerDistro" EntityType="Self.EmailerDistro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OtherEmployeeDetails" EntityType="Self.OtherEmployeeDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestAttachments" EntityType="Self.RequestAttachments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteLocation" EntityType="Self.SiteLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurveyCheckerOnline" EntityType="Self.SurveyCheckerOnline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAnswer" EntityType="Self.UserAnswer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Survey" Association="Self.FK_Question_Survey">
+            <End Role="SurveyInfo" EntitySet="SurveyInfo" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAnswer_Answer" Association="Self.FK_UserAnswer_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="UserAnswer" EntitySet="UserAnswer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VXI_EXIT_INTERVIEW_FINAL_PAYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AccountInformation">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Guid" Nullable="false" />
+          <Property Name="HrId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Hiredate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="FullName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SeparationDate" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="HiringDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LineOfBusiness" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerID" Type="Guid" Nullable="false" />
+          <Property Name="QuestionID" Type="Guid" />
+          <Property Name="AnswerDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Answer_Question" FromRole="Answer" ToRole="Question" />
+          <NavigationProperty Name="UserAnswer" Relationship="Self.FK_UserAnswer_Answer" FromRole="Answer" ToRole="UserAnswer" />
+        </EntityType>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hrid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="HiredDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Completion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hrid" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="AccountId" Type="Guid" />
+          <Property Name="IsFinished" Type="Boolean" />
+          <Property Name="DateFinished" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="EmailerDistro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailDistro" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OtherEmployeeDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailAddress" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Hrid" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionID" Type="Guid" Nullable="false" />
+          <Property Name="SurveyID" Type="Guid" />
+          <Property Name="QuestionType" Type="Int32" />
+          <Property Name="QuestionAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="QuestionDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OtherAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_Answer_Question" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="SurveyInfo" Relationship="Self.FK_Question_Survey" FromRole="Question" ToRole="SurveyInfo" />
+          <Property Name="hasOther" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="RequestAttachments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OriginalFileName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="SavedFileName" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SiteLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SiteDescription" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SurveyCheckerOnline">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurveyId" Type="Guid" />
+          <Property Name="Createdby" Type="Guid" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SurveyInfo">
+          <Key>
+            <PropertyRef Name="SurveyID" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SurveyID" Type="Guid" Nullable="false" />
+          <Property Name="SurveyDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Question_Survey" FromRole="SurveyInfo" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="UserAnswer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserAnswerID" Type="Guid" Nullable="false" />
+          <Property Name="AccountId" Type="Guid" />
+          <Property Name="AnswerID" Type="Guid" />
+          <Property Name="QuestionID" Type="Guid" />
+          <Property Name="SurveyID" Type="Guid" />
+          <Property Name="Response" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Createdby" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="OtherResponse" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Answer" Relationship="Self.FK_UserAnswer_Answer" FromRole="UserAnswer" ToRole="Answer" />
+        </EntityType>
+        <Association Name="FK_Answer_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+          <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAnswer_Answer">
+          <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+          <End Role="UserAnswer" Type="Self.UserAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnswerID" />
+            </Principal>
+            <Dependent Role="UserAnswer">
+              <PropertyRef Name="AnswerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Survey">
+          <End Role="SurveyInfo" Type="Self.SurveyInfo" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SurveyInfo">
+              <PropertyRef Name="SurveyID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="SurveyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VXI_EXIT_INTERVIEW_FINAL_PAYEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccountInformation" EntityType="Self.AccountInformation" />
+          <EntitySet Name="Answer" EntityType="Self.Answer" />
+          <EntitySet Name="Assignment" EntityType="Self.Assignment" />
+          <EntitySet Name="Completion" EntityType="Self.Completion" />
+          <EntitySet Name="EmailerDistro" EntityType="Self.EmailerDistro" />
+          <EntitySet Name="OtherEmployeeDetails" EntityType="Self.OtherEmployeeDetails" />
+          <EntitySet Name="Question" EntityType="Self.Question" />
+          <EntitySet Name="RequestAttachments" EntityType="Self.RequestAttachments" />
+          <EntitySet Name="SiteLocation" EntityType="Self.SiteLocation" />
+          <EntitySet Name="SurveyCheckerOnline" EntityType="Self.SurveyCheckerOnline" />
+          <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" />
+          <EntitySet Name="UserAnswer" EntityType="Self.UserAnswer" />
+          <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Answer" EntitySet="Answer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAnswer_Answer" Association="Self.FK_UserAnswer_Answer">
+            <End Role="Answer" EntitySet="Answer" />
+            <End Role="UserAnswer" EntitySet="UserAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Survey" Association="Self.FK_Question_Survey">
+            <End Role="SurveyInfo" EntitySet="SurveyInfo" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <FunctionImport Name="usp_Report" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="String" />
+            <Parameter Name="EndDate" Mode="In" Type="String" />
+            <Parameter Name="Site" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Report_bydate" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_bydate_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="String" />
+            <Parameter Name="EndDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Report_ById" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_ById_Result)">
+            <Parameter Name="Hrid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Report_FinalPay" ReturnType="Collection(VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_FinalPay_Result)">
+            <Parameter Name="StartDate" Mode="In" Type="String" />
+            <Parameter Name="EndDate" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="usp_Report_Result">
+          <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Birthday" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LineOfBusiness" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Site" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SeparationDate" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Question1" Nullable="true" />
+          <Property Type="String" Name="Response1" Nullable="true" />
+          <Property Type="String" Name="Question2" Nullable="true" />
+          <Property Type="String" Name="Response2" Nullable="true" />
+          <Property Type="String" Name="Others" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Question3" Nullable="true" />
+          <Property Type="String" Name="Response3" Nullable="true" />
+          <Property Type="String" Name="Question4" Nullable="true" />
+          <Property Type="String" Name="Response4" Nullable="true" />
+          <Property Type="String" Name="Question5" Nullable="true" />
+          <Property Type="String" Name="Response5" Nullable="true" />
+          <Property Type="String" Name="Question6" Nullable="true" />
+          <Property Type="String" Name="Response6" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Report_bydate_Result">
+          <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Birthday" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LineOfBusiness" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Site" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SeparationDate" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Question1" Nullable="true" />
+          <Property Type="String" Name="Response1" Nullable="true" />
+          <Property Type="String" Name="Question2" Nullable="true" />
+          <Property Type="String" Name="Response2" Nullable="true" />
+          <Property Type="String" Name="Others" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Question3" Nullable="true" />
+          <Property Type="String" Name="Response3" Nullable="true" />
+          <Property Type="String" Name="Question4" Nullable="true" />
+          <Property Type="String" Name="Response4" Nullable="true" />
+          <Property Type="String" Name="Question5" Nullable="true" />
+          <Property Type="String" Name="Response5" Nullable="true" />
+          <Property Type="String" Name="Question6" Nullable="true" />
+          <Property Type="String" Name="Response6" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Report_ById_Result">
+          <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Birthday" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LineOfBusiness" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Site" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SeparationDate" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Question1" Nullable="true" />
+          <Property Type="String" Name="Response1" Nullable="true" />
+          <Property Type="String" Name="Question2" Nullable="true" />
+          <Property Type="String" Name="Response2" Nullable="true" />
+          <Property Type="String" Name="Others" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Question3" Nullable="true" />
+          <Property Type="String" Name="Response3" Nullable="true" />
+          <Property Type="String" Name="Question4" Nullable="true" />
+          <Property Type="String" Name="Response4" Nullable="true" />
+          <Property Type="String" Name="Question5" Nullable="true" />
+          <Property Type="String" Name="Response5" Nullable="true" />
+          <Property Type="String" Name="Question6" Nullable="true" />
+          <Property Type="String" Name="Response6" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_Report_FinalPay_Result">
+          <Property Type="String" Name="Hrid" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="350" />
+          <Property Type="String" Name="HireDate" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="450" />
+          <Property Type="String" Name="MobileNumber" Nullable="true" MaxLength="24" />
+          <Property Type="DateTime" Name="CompletedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SavedFileName" Nullable="true" MaxLength="450" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VXI_EXIT_INTERVIEW_FINAL_PAYModelStoreContainer" CdmEntityContainer="VXI_EXIT_INTERVIEW_FINAL_PAYEntities">
+          <EntitySetMapping Name="AccountInformation">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.AccountInformation">
+              <MappingFragment StoreEntitySet="AccountInformation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="HrId" ColumnName="HrId" />
+                <ScalarProperty Name="Hiredate" ColumnName="Hiredate" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+                <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
+                <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Answer">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Answer">
+              <MappingFragment StoreEntitySet="Answer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="AnswerDescription" ColumnName="AnswerDescription" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Assignment">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Assignment">
+              <MappingFragment StoreEntitySet="Assignment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="HiredDate" ColumnName="HiredDate" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Completion">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Completion">
+              <MappingFragment StoreEntitySet="Completion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+                <ScalarProperty Name="DateFinished" ColumnName="DateFinished" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailerDistro">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.EmailerDistro">
+              <MappingFragment StoreEntitySet="EmailerDistro">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="EmailDistro" ColumnName="EmailDistro" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OtherEmployeeDetails">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.OtherEmployeeDetails">
+              <MappingFragment StoreEntitySet="OtherEmployeeDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="hasOther" ColumnName="hasOther" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+                <ScalarProperty Name="QuestionAnswer" ColumnName="QuestionAnswer" />
+                <ScalarProperty Name="QuestionDescription" ColumnName="QuestionDescription" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OtherAnswer" ColumnName="OtherAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestAttachments">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.RequestAttachments">
+              <MappingFragment StoreEntitySet="RequestAttachments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+                <ScalarProperty Name="SavedFileName" ColumnName="SavedFileName" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteLocation">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.SiteLocation">
+              <MappingFragment StoreEntitySet="SiteLocation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+                <ScalarProperty Name="SiteDescription" ColumnName="SiteDescription" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyCheckerOnline">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.SurveyCheckerOnline">
+              <MappingFragment StoreEntitySet="SurveyCheckerOnline">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyInfo">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.SurveyInfo">
+              <MappingFragment StoreEntitySet="SurveyInfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="SurveyDescription" ColumnName="SurveyDescription" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAnswer">
+            <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.UserAnswer">
+              <MappingFragment StoreEntitySet="UserAnswer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserAnswerID" ColumnName="UserAnswerID" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="OtherResponse" ColumnName="OtherResponse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_Report" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_Result">
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="Response1" ColumnName="Response1" />
+                <ScalarProperty Name="Question2" ColumnName="Question2" />
+                <ScalarProperty Name="Response2" ColumnName="Response2" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="Question3" ColumnName="Question3" />
+                <ScalarProperty Name="Response3" ColumnName="Response3" />
+                <ScalarProperty Name="Question4" ColumnName="Question4" />
+                <ScalarProperty Name="Response4" ColumnName="Response4" />
+                <ScalarProperty Name="Question5" ColumnName="Question5" />
+                <ScalarProperty Name="Response5" ColumnName="Response5" />
+                <ScalarProperty Name="Question6" ColumnName="Question6" />
+                <ScalarProperty Name="Response6" ColumnName="Response6" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Report_bydate" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report_bydate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_bydate_Result">
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="Response1" ColumnName="Response1" />
+                <ScalarProperty Name="Question2" ColumnName="Question2" />
+                <ScalarProperty Name="Response2" ColumnName="Response2" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="Question3" ColumnName="Question3" />
+                <ScalarProperty Name="Response3" ColumnName="Response3" />
+                <ScalarProperty Name="Question4" ColumnName="Question4" />
+                <ScalarProperty Name="Response4" ColumnName="Response4" />
+                <ScalarProperty Name="Question5" ColumnName="Question5" />
+                <ScalarProperty Name="Response5" ColumnName="Response5" />
+                <ScalarProperty Name="Question6" ColumnName="Question6" />
+                <ScalarProperty Name="Response6" ColumnName="Response6" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Report_ById" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report_ById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_ById_Result">
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="Question1" ColumnName="Question1" />
+                <ScalarProperty Name="Response1" ColumnName="Response1" />
+                <ScalarProperty Name="Question2" ColumnName="Question2" />
+                <ScalarProperty Name="Response2" ColumnName="Response2" />
+                <ScalarProperty Name="Others" ColumnName="Others" />
+                <ScalarProperty Name="Question3" ColumnName="Question3" />
+                <ScalarProperty Name="Response3" ColumnName="Response3" />
+                <ScalarProperty Name="Question4" ColumnName="Question4" />
+                <ScalarProperty Name="Response4" ColumnName="Response4" />
+                <ScalarProperty Name="Question5" ColumnName="Question5" />
+                <ScalarProperty Name="Response5" ColumnName="Response5" />
+                <ScalarProperty Name="Question6" ColumnName="Question6" />
+                <ScalarProperty Name="Response6" ColumnName="Response6" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Report_FinalPay" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report_FinalPay">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_FinalPay_Result">
+                <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+                <ScalarProperty Name="SavedFileName" ColumnName="SavedFileName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

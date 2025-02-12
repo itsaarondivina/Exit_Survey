@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VXI_EXIT_INTERVIEW_FINAL_PAYModelStoreContainer" CdmEntityContainer="VXI_EXIT_INTERVIEW_FINAL_PAYEntities">
+    <EntitySetMapping Name="AccountInformation">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.AccountInformation">
+        <MappingFragment StoreEntitySet="AccountInformation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="HrId" ColumnName="HrId" />
+          <ScalarProperty Name="Hiredate" ColumnName="Hiredate" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+          <ScalarProperty Name="HiringDate" ColumnName="HiringDate" />
+          <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="AnswerDescription" ColumnName="AnswerDescription" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assignment">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Assignment">
+        <MappingFragment StoreEntitySet="Assignment">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="HiredDate" ColumnName="HiredDate" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Completion">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Completion">
+        <MappingFragment StoreEntitySet="Completion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="IsFinished" ColumnName="IsFinished" />
+          <ScalarProperty Name="DateFinished" ColumnName="DateFinished" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmailerDistro">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.EmailerDistro">
+        <MappingFragment StoreEntitySet="EmailerDistro">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="EmailDistro" ColumnName="EmailDistro" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OtherEmployeeDetails">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.OtherEmployeeDetails">
+        <MappingFragment StoreEntitySet="OtherEmployeeDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="hasOther" ColumnName="hasOther" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="QuestionType" ColumnName="QuestionType" />
+          <ScalarProperty Name="QuestionAnswer" ColumnName="QuestionAnswer" />
+          <ScalarProperty Name="QuestionDescription" ColumnName="QuestionDescription" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OtherAnswer" ColumnName="OtherAnswer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RequestAttachments">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.RequestAttachments">
+        <MappingFragment StoreEntitySet="RequestAttachments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginalFileName" ColumnName="OriginalFileName" />
+          <ScalarProperty Name="SavedFileName" ColumnName="SavedFileName" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SiteLocation">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.SiteLocation">
+        <MappingFragment StoreEntitySet="SiteLocation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="SiteDescription" ColumnName="SiteDescription" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyCheckerOnline">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.SurveyCheckerOnline">
+        <MappingFragment StoreEntitySet="SurveyCheckerOnline">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SurveyId" ColumnName="SurveyId" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyInfo">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.SurveyInfo">
+        <MappingFragment StoreEntitySet="SurveyInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="SurveyDescription" ColumnName="SurveyDescription" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAnswer">
+      <EntityTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.UserAnswer">
+        <MappingFragment StoreEntitySet="UserAnswer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserAnswerID" ColumnName="UserAnswerID" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="AnswerID" ColumnName="AnswerID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="SurveyID" ColumnName="SurveyID" />
+          <ScalarProperty Name="Response" ColumnName="Response" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OtherResponse" ColumnName="OtherResponse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_Report" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_Result">
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="Question1" ColumnName="Question1" />
+          <ScalarProperty Name="Response1" ColumnName="Response1" />
+          <ScalarProperty Name="Question2" ColumnName="Question2" />
+          <ScalarProperty Name="Response2" ColumnName="Response2" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="Question3" ColumnName="Question3" />
+          <ScalarProperty Name="Response3" ColumnName="Response3" />
+          <ScalarProperty Name="Question4" ColumnName="Question4" />
+          <ScalarProperty Name="Response4" ColumnName="Response4" />
+          <ScalarProperty Name="Question5" ColumnName="Question5" />
+          <ScalarProperty Name="Response5" ColumnName="Response5" />
+          <ScalarProperty Name="Question6" ColumnName="Question6" />
+          <ScalarProperty Name="Response6" ColumnName="Response6" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_Report_bydate" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report_bydate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_bydate_Result">
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="Question1" ColumnName="Question1" />
+          <ScalarProperty Name="Response1" ColumnName="Response1" />
+          <ScalarProperty Name="Question2" ColumnName="Question2" />
+          <ScalarProperty Name="Response2" ColumnName="Response2" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="Question3" ColumnName="Question3" />
+          <ScalarProperty Name="Response3" ColumnName="Response3" />
+          <ScalarProperty Name="Question4" ColumnName="Question4" />
+          <ScalarProperty Name="Response4" ColumnName="Response4" />
+          <ScalarProperty Name="Question5" ColumnName="Question5" />
+          <ScalarProperty Name="Response5" ColumnName="Response5" />
+          <ScalarProperty Name="Question6" ColumnName="Question6" />
+          <ScalarProperty Name="Response6" ColumnName="Response6" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_Report_ById" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report_ById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_ById_Result">
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="LineOfBusiness" ColumnName="LineOfBusiness" />
+          <ScalarProperty Name="Site" ColumnName="Site" />
+          <ScalarProperty Name="SeparationDate" ColumnName="SeparationDate" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="Question1" ColumnName="Question1" />
+          <ScalarProperty Name="Response1" ColumnName="Response1" />
+          <ScalarProperty Name="Question2" ColumnName="Question2" />
+          <ScalarProperty Name="Response2" ColumnName="Response2" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="Question3" ColumnName="Question3" />
+          <ScalarProperty Name="Response3" ColumnName="Response3" />
+          <ScalarProperty Name="Question4" ColumnName="Question4" />
+          <ScalarProperty Name="Response4" ColumnName="Response4" />
+          <ScalarProperty Name="Question5" ColumnName="Question5" />
+          <ScalarProperty Name="Response5" ColumnName="Response5" />
+          <ScalarProperty Name="Question6" ColumnName="Question6" />
+          <ScalarProperty Name="Response6" ColumnName="Response6" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_Report_FinalPay" FunctionName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store.usp_Report_FinalPay">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VXI_EXIT_INTERVIEW_FINAL_PAYModel.usp_Report_FinalPay_Result">
+          <ScalarProperty Name="Hrid" ColumnName="Hrid" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="SavedFileName" ColumnName="SavedFileName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

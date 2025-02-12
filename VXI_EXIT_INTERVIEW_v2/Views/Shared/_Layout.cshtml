@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VXI EXIT SURVEY</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" type="image/x-icon" href="~/Content/Image/VXI.ico" />
+    <script type="text/javascript">
+        var url = "@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))";
+    </script>
+    <style>
+
+        .Title {
+            color: black;
+        }
+
+        .loader-container {
+            position: fixed;
+            inset: 0;
+            background-color: rgb(0 0 0 / 0.46);
+            z-index: 99999;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .footer-container {
+            position: fixed;
+            left: 0;
+            bottom: 25px;
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+
+            .footer-container img {
+                width: 20vh;
+            }
+
+        .version-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body ng-app="App">
+    <div class="container body-content">
+        <section>
+            <nav class="navbar  navbar-expand-lg fixed-top  " style="background-color: white; color: black; display: flex; justify-content: center; align-items: center; height: 58px; box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1); position: fixed; width: 100%; z-index: 1000; border-bottom: 2px solid #f79a42; ">
+                <div class="title_container">
+                    <a class="navbar-brand " href="@Url.Action("Index", "Home")" style="">
+                        <h2 class="Title"><strong>VXI EXIT SURVEY</strong></h2>
+                    </a>
+                </div>
+            </nav>
+        </section>
+        <div style="margin-bottom: 100px;">
+            @RenderBody()
+        </div>
+        
+        <div class="loader-container" id="Loader">
+            <div class="text-center">
+                <div style="background-color: white; display: inline-block; border-radius: 5px;">
+                    <img src="~/Content/Image/Spinner-1s-200px (1).gif" height="55" width="55" />
+                </div>
+            </div>
+        </div>
+        <div class="footer-container" id="footer">
+            <div class="logo-and-version">
+                <hr />
+                <img src="~/Content/Image/VXI_LOGO_FOOTER.png" />
+                @*<p class="version-info">
+            <strong> Version:</strong> 1.0 | <strong> Date:</strong> 09/11/2023
+        </p>*@
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Angular/angular.min.js"></script>
+    <script src="~/Scripts/Angular/mainApp.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+    <script src="~/Scripts/Angular/homeController.js"></script>
+    <script src="~/Scripts/Angular/Controllers/LoginController.js"></script>
+    <script src="~/Scripts/Angular/Controllers/LoaderService.js"></script>
+</body>
+</html>
+

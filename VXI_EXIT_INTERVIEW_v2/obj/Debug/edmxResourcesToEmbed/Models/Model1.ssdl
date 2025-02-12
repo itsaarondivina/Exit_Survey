@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VXI_EXIT_INTERVIEW_FINAL_PAYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AccountInformation">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="HrId" Type="varchar" MaxLength="50" />
+    <Property Name="Hiredate" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="FullName" Type="varchar" MaxLength="350" />
+    <Property Name="Site" Type="varchar" MaxLength="50" />
+    <Property Name="SeparationDate" Type="varchar" MaxLength="150" />
+    <Property Name="HiringDate" Type="varchar" MaxLength="50" />
+    <Property Name="LineOfBusiness" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnswerID" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnswerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="QuestionID" Type="uniqueidentifier" />
+    <Property Name="AnswerDescription" Type="varchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Createdby" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hrid" Type="varchar" MaxLength="50" />
+    <Property Name="FullName" Type="varchar" MaxLength="350" />
+    <Property Name="HiredDate" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="Completion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Hrid" Type="varchar" MaxLength="16" />
+    <Property Name="AccountId" Type="uniqueidentifier" />
+    <Property Name="IsFinished" Type="bit" />
+    <Property Name="DateFinished" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EmailerDistro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Site" Type="varchar" MaxLength="50" />
+    <Property Name="EmailDistro" Type="varchar" MaxLength="450" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="OtherEmployeeDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="450" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="24" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Hrid" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="QuestionID" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SurveyID" Type="uniqueidentifier" />
+    <Property Name="QuestionType" Type="int" />
+    <Property Name="QuestionAnswer" Type="varchar(max)" />
+    <Property Name="QuestionDescription" Type="varchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Createdby" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="OtherAnswer" Type="varchar" MaxLength="250" />
+    <Property Name="hasOther" Type="bit" />
+  </EntityType>
+  <EntityType Name="RequestAttachments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OriginalFileName" Type="varchar" MaxLength="350" />
+    <Property Name="SavedFileName" Type="varchar" MaxLength="450" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="SiteLocation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SiteId" Type="varchar" MaxLength="50" />
+    <Property Name="SiteDescription" Type="varchar" MaxLength="250" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="15" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="SurveyCheckerOnline">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurveyId" Type="uniqueidentifier" />
+    <Property Name="Createdby" Type="uniqueidentifier" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="SurveyInfo">
+    <Key>
+      <PropertyRef Name="SurveyID" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SurveyID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="SurveyDescription" Type="varchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Createdby" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserAnswer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserAnswerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AccountId" Type="uniqueidentifier" />
+    <Property Name="AnswerID" Type="uniqueidentifier" />
+    <Property Name="QuestionID" Type="uniqueidentifier" />
+    <Property Name="SurveyID" Type="uniqueidentifier" />
+    <Property Name="Response" Type="varchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="Createdby" Type="uniqueidentifier" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="OtherResponse" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <Association Name="FK_Answer_Question">
+    <End Role="Question" Type="Self.Question" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="QuestionID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Survey">
+    <End Role="SurveyInfo" Type="Self.SurveyInfo" Multiplicity="0..1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SurveyInfo">
+        <PropertyRef Name="SurveyID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="SurveyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAnswer_Answer">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="0..1" />
+    <End Role="UserAnswer" Type="Self.UserAnswer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnswerID" />
+      </Principal>
+      <Dependent Role="UserAnswer">
+        <PropertyRef Name="AnswerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="usp_Report" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="varchar" Mode="In" />
+    <Parameter Name="EndDate" Type="varchar" Mode="In" />
+    <Parameter Name="Site" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_Report_bydate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="varchar" Mode="In" />
+    <Parameter Name="EndDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_Report_ById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Hrid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_Report_FinalPay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="StartDate" Type="varchar" Mode="In" />
+    <Parameter Name="EndDate" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="VXI_EXIT_INTERVIEW_FINAL_PAYModelStoreContainer">
+    <EntitySet Name="AccountInformation" EntityType="Self.AccountInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Assignment" EntityType="Self.Assignment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Completion" EntityType="Self.Completion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmailerDistro" EntityType="Self.EmailerDistro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OtherEmployeeDetails" EntityType="Self.OtherEmployeeDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RequestAttachments" EntityType="Self.RequestAttachments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SiteLocation" EntityType="Self.SiteLocation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyCheckerOnline" EntityType="Self.SurveyCheckerOnline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyInfo" EntityType="Self.SurveyInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAnswer" EntityType="Self.UserAnswer" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Answer_Question" Association="Self.FK_Answer_Question">
+      <End Role="Question" EntitySet="Question" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Survey" Association="Self.FK_Question_Survey">
+      <End Role="SurveyInfo" EntitySet="SurveyInfo" />
+      <End Role="Question" EntitySet="Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAnswer_Answer" Association="Self.FK_UserAnswer_Answer">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="UserAnswer" EntitySet="UserAnswer" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
